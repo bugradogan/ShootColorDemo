@@ -11,15 +11,14 @@ public class GameManager : MonoBehaviour
     private int activeLevel;
     private Box[] boxes;
     public GameObject nextLevelPanel;
-    public GameObject finishParticleObject;
-    [HideInInspector] public int trueColor;
-    [HideInInspector] public bool startGame = false;
+    public GameObject finishParticleObject;  
     public GameObject[] levels;
     public Text levelText;
+    [HideInInspector] public int trueColor;
+    [HideInInspector] public bool startGame = false;
 
     private void Awake()
-    {
-       // PlayerPrefs.DeleteAll();
+    {      
         Instance = this;
         for (int i = 0; i < levels.Length; i++)
         {
@@ -28,7 +27,6 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Level"))
         {
             activeLevel = PlayerPrefs.GetInt("Level");
-            Debug.Log("Active:" + activeLevel);
             levels[activeLevel].SetActive(true);
         }
         else
@@ -48,12 +46,8 @@ public class GameManager : MonoBehaviour
 
 
     void Update()
-    {
-        
-            
-        trueColor = Mathf.Clamp(trueColor, 0, boxCount);
-        Debug.Log("True Color:" + trueColor);
-        Debug.Log("Box Color:" + boxCount);
+    {                   
+        trueColor = Mathf.Clamp(trueColor, 0, boxCount);       
         if(startGame)
         {
             if (boxCount == trueColor)
@@ -65,11 +59,7 @@ public class GameManager : MonoBehaviour
                 finishParticleObject.SetActive(true);
                
             }
-        }
-          
-            
-
-
+        }       
     }
 
     public void StartGame()

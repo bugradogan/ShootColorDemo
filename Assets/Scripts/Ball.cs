@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+   
+    public float ballSpeed = 8f;
     private Rigidbody rb;
-    public float ballSpeed = 500f;
     private MeshRenderer ball;
     private Shooter shooter;
     private Vector3 dir;
-   public ShooterColor color;
-   [HideInInspector] public Color ballColor;
-    
+    [HideInInspector] public Color ballColor;
+    [HideInInspector] public ShooterColor color;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,9 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         color = shooter.shooterColor;
-      
-        if (shooter.shooterColor == ShooterColor.Red)        
-            ballColor = ball.material.color = shooter.colors[0];          
+
+        if (shooter.shooterColor == ShooterColor.Red)
+            ballColor = ball.material.color = shooter.colors[0];
         else if (shooter.shooterColor == ShooterColor.Green)
             ballColor = ball.material.color = shooter.colors[1];
         else if (shooter.shooterColor == ShooterColor.Blue)
@@ -40,8 +41,8 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-      
-        if(other.gameObject.tag == "Wall_B")
+
+        if (other.gameObject.tag == "Wall_B")
         {
             dir = Vector3.back;
         }

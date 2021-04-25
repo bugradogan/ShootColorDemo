@@ -7,8 +7,8 @@ public class Box : MonoBehaviour
     public ShooterColor Targetcolor;
     public ShooterColor currentColor;
     public GameObject boxParticle;
-    private bool colored = false;
     public AudioSource audioSource;
+    private bool colored = false;
 
 
     private void OnTriggerEnter(Collider other)
